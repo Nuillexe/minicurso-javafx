@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.interface_de_clientes.CadastroController.java">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.interface_de_clientes.Controllers.CadastroController">
    <children>
       <Label layoutX="143.0" layoutY="25.0" text="Cadastro de Clientes ">
          <font>
@@ -16,11 +15,11 @@
       </Label>
       <AnchorPane layoutX="129.0" layoutY="193.0" prefHeight="30.0" prefWidth="200.0" visible="false" />
       <Label layoutX="203.0" layoutY="99.0" text="Nome" />
-      <TextField layoutX="236.0" layoutY="95.0" />
-      <TextField layoutX="236.0" layoutY="160.0" />
+      <TextField id="campoNome" fx:id="campoNome" layoutX="236.0" layoutY="95.0" />
+      <TextField id="campoIdade" fx:id="campoIdade" layoutX="236.0" layoutY="160.0" promptText="Somente numeros" />
       <Label layoutX="204.0" layoutY="164.0" text="Idade" />
-      <TextField layoutX="236.0" layoutY="222.0" />
+      <TextField id="campoCPF" fx:id="campoCPF" layoutX="236.0" layoutY="222.0" promptText="Somente numeros" />
       <Label layoutX="208.0" layoutY="226.0" text="CPF" />
-      <Button layoutX="277.0" layoutY="297.0" mnemonicParsing="false" text="Cadastrar" />
+      <Button id="cadastrarBtn" layoutX="277.0" layoutY="297.0" mnemonicParsing="false" onMouseClicked="#cadastrar" text="Cadastrar" />
    </children>
 </AnchorPane>

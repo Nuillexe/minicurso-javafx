@@ -1,4 +1,5 @@
 package com.example.interface_de_clientes;
+import com.example.interface_de_clientes.Controllers.MenuController;
 import javafx.application.Application;
 
 import javafx.scene.Scene;
@@ -13,6 +14,7 @@ public class Main extends  Application{
         stage.setTitle("interface de cadstro de clientes");
         stage.setScene(scene);
         stage.show();
+        Sessao.stageInstance=stage;
     }
 }
 
