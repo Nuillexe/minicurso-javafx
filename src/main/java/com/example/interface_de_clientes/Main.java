@@ -9,12 +9,14 @@ public class Main extends  Application{
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader= new FXMLLoader(MenuController.class.getResource("/com/example/interface_de_clientes/menu.fxml"));//
-        Scene scene= new Scene(fxmlLoader.load(), 600,400);
-        stage.setTitle("interface de cadstro de clientes");
+        FXMLLoader fxmlLoader = new FXMLLoader(MenuController.class.getResource("/com/example/interface_de_clientes/menu.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 600, 400);
+        stage.setTitle("interface de cadastro de clientes");
         stage.setScene(scene);
         stage.show();
-        Sessao.stageInstance=stage;
+
+        // SALVA a janela principal na Sessão para podermos usá-la depois em qualquer lugar
+        Sessao.stageInstance = stage;
     }
 }
 
