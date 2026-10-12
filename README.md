@@ -3,7 +3,7 @@
 Este repositório é o material do minicurso Introdução a JavaFx: Construindo uma interface pra cadastro de clientes, que fará parte da do evento de tecnologia WeekIT, que ocorrerá durante a semana de tecnologia no IFBA campus Vitória da conquista.
 O projeto será desenvolvido no InteliJ 
 
-##Pré requisitos
+## Pré requisitos
 - **JDK Java 17+**: De preferencia a versão mais nova
 - **SceneBuilder**
 - InteliJ
