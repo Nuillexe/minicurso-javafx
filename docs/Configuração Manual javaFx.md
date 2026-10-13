@@ -1,269 +1,85 @@
-# Configurando JavaFX manualmente no IntelliJ IDEA
+# Configuração Manual do JavaFX no IntelliJ IDEA Community Edition
 
-Este guia apresenta o procedimento para configurar o JavaFX manualmente no IntelliJ IDEA, sem utilizar Maven ou Gradle para gerenciar as dependências.
+> **OBSERVAÇÃO IMPORTANTE:**  
+> Se o seu ambiente estiver com acesso normal à internet e o **Maven** estiver funcionando perfeitamente, **você não precisa se preocupar em baixar ou configurar o JavaFX manualmente**. O Maven cuidará do download de todas as dependências automaticamente. A sua única preocupação será garantir que está utilizando uma versão do **JDK 21 ou superior** instalada e configurada no seu IntelliJ.
 
-## 1. Pré-requisitos
+---
 
-Antes de começar, você precisará de:
+## 1. Atentando-se às Versões: Compatibilidade entre Java (JDK) e JavaFX
 
-- IntelliJ IDEA.
-- JDK instalado.
-- JavaFX SDK compatível com a versão do JDK.
+Para evitar erros de compilação, incompatibilidade de bibliotecas ou problemas no momento da execução, **a versão do JavaFX SDK deve ser equivalente ou compatível com a versão do Java (JDK) utilizada no projeto**.
 
-**Combinações recomendadas:**
+### Regra Geral de Compatibilidade:
+* A versão do JavaFX **deve bater com a versão principal do JDK** ou ser utilizada com um JDK da mesma geração.
+* Versões **LTS** (Long-Term Support / Suporte de Longo Prazo) são as mais recomendadas para estudo, faculdade e projetos profissionais.
 
-| JDK | JavaFX SDK |
-|---|---|
-| Java 17 | JavaFX 17 |
-| Java 21 | JavaFX 21 |
+### Tabela de Referência:
 
-O JavaFX não está incluído no JDK desde o Java 11. Portanto, é necessário baixar seu SDK separadamente.
+| Versão da JDK (Java) | Versão do JavaFX SDK | Tipo / Recomendação                             |
+| :--- | :--- |:------------------------------------------------|
+| **JDK 21 ou superior** | **JavaFX 21** (ou superior) | **Recomendado** (LTS atual)                     |
+| **JDK 17** | **JavaFX 17** | LTS anterior (muito usado em faculdades)        |
+| **JDK 11** | **JavaFX 11** | LTS legada (Não recomendada)                    |
+| **JDK 8** | *JavaFX integrado* | Nativo no próprio JDK (não requer SDK externo) (Não recomendada) |
 
-> **Importante:** não é obrigatório utilizar exatamente as versões indicadas na tabela. Entretanto, alinhar as versões do JDK e do JavaFX simplifica a configuração e evita problemas de compatibilidade.
+---
 
-## 2. Instalar o JDK
+## 2. Passo a Passo: Configuração Manual por Pasta (`lib`)
 
-Caso ainda não tenha um JDK instalado, você pode baixá-lo de uma distribuição confiável:
+Este procedimento serve para **qualquer caso** (computadores com restrições de rede, laboratórios de faculdade, ambientes sem internet ou quando o download do Maven falhar por qualquer motivo).
 
-- [Eclipse Temurin — downloads oficiais](https://adoptium.net/temurin/releases/)
+### Passo 1: Baixar e Extrair o JavaFX SDK
+1. Acesse o site oficial de distribuição do JavaFX: [gluonhq.com/products/javafx/](https://gluonhq.com/products/javafx/)
+2. Na seção de downloads, selecione a versão correspondente ao seu JDK (exemplo: **JavaFX 21** para **JDK 21**).
+3. Escolha o seu Sistema Operacional (Windows, macOS ou Linux) e o tipo **SDK** (formato `.zip`).
+4. Baixe e extraia a pasta compactada em um diretório do seu computador (exemplo: `C:\Java\javafx-sdk-21`).
 
-Selecione a versão desejada, o sistema operacional Windows, a arquitetura x64 e o pacote JDK.
+---
 
-Após a instalação, abra o terminal e execute:
+### Passo 2: Criar o Projeto no IntelliJ
+1. Abra o **IntelliJ IDEA Community Edition**.
+2. Clique em **New Project**.
+3. No painel esquerdo, selecione **JavaFX** (ou **Java**).
+4. Configure as opções principais:
+    * **Name:** Nome do seu projeto.
+    * **Build system:** Selecione **Maven** (usado para organizar a estrutura do projeto e das pastas).
+    * **JDK:** Selecione a sua versão do Java instalada (recomendada: JDK 21+).
+5. Clique em **Create**.
+
+---
+
+### Passo 3: Adicionar a Pasta `lib` do JavaFX no Módulo do Projeto
+Nesta etapa, o IntelliJ passará a reconhecer as classes do JavaFX diretamente dos arquivos `.jar` locais.
+
+1. No menu superior do IntelliJ, vá em **File** > **Project Structure...** (ou use o atalho `Ctrl + Alt + Shift + S`).
+2. No menu lateral esquerdo, clique em **Modules**.
+3. Abra a aba **Dependencies** na parte superior da janela.
+4. Clique no ícone de adição **`+`** (localizado no lado direito do painel) e escolha a opção **JARs or Directories...**
+5. Navegue até o local onde você extraiu o JavaFX SDK e selecione a pasta **`lib`** (exemplo: `C:\Java\javafx-sdk-21\lib`).
+6. Clique em **OK**.
+7. Certifique-se de que a caixa ao lado da nova biblioteca adicionada esteja **marcada**.
+8. Clique em **Apply** e em **OK**.
+
+---
+
+### Passo 4: Executar a Aplicação
+Na maioria dos casos modernos, ao criar o projeto com a estrutura do Maven e vincular a pasta `lib`, a sua aplicação já estará pronta para rodar:
+
+1. Abra a sua classe principal que estende `Application`.
+2. Clique no ícone de **Play verde** ao lado do método `public static void main(...)` e selecione **Run 'SuaClasse.main()'**.
+3. A janela gráfica do JavaFX será iniciada.
+
+---
+
+## 3. Observação: E se não funcionar de primeira? (Configuração de Argumentos de VM)
+
+Caso você tente rodar o projeto e receba erros indicando que os componentes do JavaFX não foram encontrados (*"JavaFX runtime components are missing"*), será necessário informar explicitamente ao Java onde estão os módulos através das **VM Options**:
+
+1. No canto superior direito do IntelliJ, ao lado do botão verde de Play, clique no menu suspenso de execução e selecione **Edit Configurations...**
+2. Certifique-se de que a sua aplicação está selecionada no painel esquerdo.
+3. Localize o campo **VM options**:
+    * *Caso o campo não apareça:* Clique em **Modify options** (em azul) e marque a opção **Add VM options**.
+4. No campo **VM options**, cole o seguinte comando (substituindo pelo caminho exato da sua pasta `lib`):
 
 ```bash
-java -version
-javac -version
-```
-
-Os comandos devem exibir a versão do Java e do compilador instalados.
-
-Neste tutorial, utilizaremos Java 21 como exemplo, mas o procedimento também funciona com Java 17, desde que seja utilizado um JavaFX compatível.
-
-Se o IntelliJ já estiver configurado com um JDK compatível, não será necessário instalar outro.
-
-## 3. Baixar o JavaFX SDK
-
-Acesse uma das páginas oficiais:
-
-- [OpenJFX — site oficial](https://openjfx.io/)
-- [Oracle — downloads do JavaFX](https://www.oracle.com/java/technologies/downloads/javafx/)
-
-Baixe o **JavaFX SDK** correspondente ao seu sistema operacional e à arquitetura do computador. Para Windows de 64 bits, escolha o pacote Windows x64 SDK.
-
-Escolha a versão compatível com seu JDK:
-
-- JDK 17 → JavaFX 17.
-- JDK 21 → JavaFX 21.
-
-Extraia o arquivo ZIP para um diretório de fácil acesso. Por exemplo:
-
-```text
-C:\javafx-sdk-21\
-```
-
-A estrutura deverá ser semelhante a:
-
-```text
-C:\javafx-sdk-21\
-├── bin\
-└── lib\
-    ├── javafx.base.jar
-    ├── javafx.controls.jar
-    ├── javafx.fxml.jar
-    ├── javafx.graphics.jar
-    └── ...
-```
-
-A pasta `lib` contém as bibliotecas necessárias para configurar o projeto.
-
-> Se você baixou o JavaFX 17, o diretório poderá ser `C:\javafx-sdk-17\`. Utilize sempre o caminho real da pasta em que o SDK foi extraído.
-
-## 4. Criar um projeto Java no IntelliJ
-
-1. Abra o IntelliJ IDEA.
-2. Clique em **New Project**.
-3. Selecione **Java**.
-4. Defina o nome do projeto, por exemplo, `MeuProjetoJavaFX`.
-5. Selecione o JDK instalado, seja ele Java 17 ou Java 21.
-6. Escolha a opção de build **IntelliJ**, quando disponível. Não selecione Maven ou Gradle.
-7. Crie o projeto.
-
-A estrutura inicial será semelhante a:
-
-```text
-MeuProjetoJavaFX/
-└── src/
-    └── Main.java
-```
-
-A localização de algumas opções pode variar conforme a versão do IntelliJ IDEA.
-
-## 5. Adicionar o JavaFX SDK ao projeto
-
-Precisamos informar ao IntelliJ onde estão as bibliotecas do JavaFX, para que o editor reconheça classes como `Application`, `Scene` e `Button`.
-
-1. Acesse **File → Project Structure**.
-2. Selecione **Libraries**.
-3. Clique no botão `+`.
-4. Escolha **Java**.
-5. Navegue até a pasta `lib` do JavaFX SDK.
-
-Exemplo para JavaFX 21:
-
-```text
-C:\javafx-sdk-21\lib
-```
-
-Exemplo para JavaFX 17:
-
-```text
-C:\javafx-sdk-17\lib
-```
-
-6. Selecione a pasta e confirme.
-7. Se o IntelliJ perguntar a quais módulos associar a biblioteca, selecione o módulo do projeto.
-8. Clique em **Apply** e depois em **OK**.
-
-Agora as classes do JavaFX deverão ser reconhecidas pelo editor.
-
-**Atenção:** adicionar a biblioteca ao projeto permite que o IntelliJ reconheça as classes, mas ainda precisamos configurar o ambiente de execução.
-
-## 6. Configurar as opções da JVM
-
-O Java precisa saber onde estão os módulos do JavaFX quando executar o programa.
-
-1. Abra **Run → Edit Configurations**.
-2. Selecione a configuração da classe principal. Se necessário, crie uma configuração do tipo **Application**.
-3. Localize o campo **VM options**. Em algumas versões, pode ser necessário acessar **Modify options → Add VM options**.
-4. Adicione os argumentos abaixo, substituindo o caminho pelo diretório real do JavaFX SDK:
-
-```text
---module-path "C:\javafx-sdk-21\lib" --add-modules javafx.controls,javafx.fxml
-```
-
-Para JavaFX 17, por exemplo:
-
-```text
---module-path "C:\javafx-sdk-17\lib" --add-modules javafx.controls,javafx.fxml
-```
-
-5. Clique em **Apply** e depois em **OK**.
-
-### O que significam esses argumentos?
-
-- `--module-path`: indica onde estão os módulos do JavaFX.
-- `--add-modules javafx.controls`: disponibiliza componentes gráficos, como botões, campos de texto e tabelas.
-- `--add-modules javafx.fxml`: disponibiliza o suporte ao FXML, utilizado para descrever interfaces em arquivos XML.
-
-Se o projeto não utilizar FXML, você pode remover `javafx.fxml` dos argumentos.
-
-## 7. Criar uma aplicação de teste
-
-Crie a classe `Main.java` dentro da pasta `src`:
-
-```java
-import javafx.application.Application;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-
-public class Main extends Application {
-
-    @Override
-    public void start(Stage stage) {
-        Label mensagem = new Label("JavaFX configurado!");
-        Button botao = new Button("Clique aqui");
-
-        botao.setOnAction(event ->
-            mensagem.setText("Está funcionando!")
-        );
-
-        VBox layout = new VBox(10, mensagem, botao);
-        Scene cena = new Scene(layout, 400, 250);
-
-        stage.setTitle("Teste JavaFX");
-        stage.setScene(cena);
-        stage.show();
-    }
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-}
-```
-
-Execute a classe `Main`.
-
-Se uma janela aparecer com a mensagem **"JavaFX configurado!"** e um botão funcional, a configuração está concluída.
-
-## 8. Projetos com `module-info.java`
-
-Este tutorial utiliza um projeto não modular, sem `module-info.java`, para simplificar a configuração inicial.
-
-Se o projeto já possuir esse arquivo, não o remova automaticamente. Configure os módulos utilizados pela aplicação. Por exemplo:
-
-```java
-module com.example.demo {
-    requires javafx.controls;
-    requires javafx.fxml;
-
-    exports com.example.demo;
-    opens com.example.demo to javafx.fxml;
-}
-```
-
-Substitua `com.example.demo` pelo nome real do pacote.
-
-Nesse caso, o projeto também precisará estar organizado de acordo com o sistema de módulos do Java. O argumento `--module-path` continua necessário na execução manual.
-
-## 9. Problemas comuns
-
-### Erro: `package javafx.application does not exist`
-
-**Possível causa:** o JavaFX SDK não foi adicionado corretamente às bibliotecas do projeto.
-
-**Solução:** confira se a pasta `lib` foi adicionada em **Project Structure → Libraries**.
-
-### Erro: `JavaFX runtime components are missing`
-
-**Possível causa:** o JavaFX está disponível para compilação, mas não foi configurado corretamente para execução.
-
-**Solução:** confira as VM options da configuração de execução e verifique se o caminho está correto.
-
-### Erro: `Module javafx.controls not found`
-
-**Possível causa:** o caminho informado em `--module-path` está incorreto ou aponta para a pasta errada.
-
-**Solução:** confirme que o caminho termina na pasta `lib` do JavaFX SDK e que nela existe o arquivo `javafx.controls.jar`.
-
-### Erro relacionado à versão do Java
-
-**Possível causa:** incompatibilidade entre o JDK utilizado e a versão do JavaFX.
-
-**Solução:** confira a versão do JDK em **File → Project Structure → Project** e utilize um JavaFX compatível. Para este tutorial, utilize JDK 17 com JavaFX 17 ou JDK 21 com JavaFX 21.
-
-### O editor reconhece JavaFX, mas a aplicação não abre
-
-**Possível causa:** a biblioteca foi adicionada ao projeto, mas os argumentos de execução não foram configurados ou estão associados a outra configuração.
-
-**Solução:** abra **Run → Edit Configurations**, selecione a configuração utilizada e confira as VM options.
-
-## 10. Checklist de configuração
-
-- [ ] O JDK está instalado e configurado no IntelliJ.
-- [ ] A versão do JavaFX é compatível com o JDK.
-- [ ] O JavaFX SDK foi baixado e extraído.
-- [ ] A pasta `lib` foi adicionada às bibliotecas do projeto.
-- [ ] As VM options apontam para o caminho correto.
-- [ ] A aplicação de teste abre uma janela.
-- [ ] Os componentes da interface respondem às interações.
-
-## Referências oficiais
-
-- [OpenJFX — Getting Started](https://openjfx.io/openjfx-docs/index.html)
-- [OpenJFX — documentação de instalação](https://openjfx.io/openjfx-docs/install-javafx)
-- [JetBrains — documentação do IntelliJ IDEA](https://www.jetbrains.com/help/idea/)
-
+--module-path "C:/caminho/para/seu/javafx-sdk-21/lib" --add-modules javafx.controls,javafx.fxml
