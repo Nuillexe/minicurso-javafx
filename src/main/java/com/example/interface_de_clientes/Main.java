@@ -14,7 +14,7 @@ public class Main extends  Application{
         stage.setTitle("interface de cadstro de clientes");
         stage.setScene(scene);
         stage.show();
-        Sessao.stageInstance=stage;
+        Sessao.sceneInstance=stage;
     }
 }
 
