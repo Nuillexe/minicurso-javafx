@@ -24,9 +24,9 @@ Todo o código Java da nossa aplicação fica dentro do pacote `src`. Para cada 
 
 ### O Padrão de Arquitetura MVC
 O projeto segue o padrão **Model-View-Controller (MVC)**:
-- **Model**: Faz referência ao pacote de dados correspondente às classes de entidades do sistema (neste minicurso, a classe [Cliente](src/main/java/com/example/interface_de_clientes/Models/Cliente.java)).
+- **Model**: Faz referência ao pacote de dados correspondente às classes de entidades do sistema (neste minicurso, a classe [Cliente](/src/main/java/com/example/interface_de_clientes/Models/Cliente.java)).
 - **View**: Diz respeito a toda a parte visual e de interação com o usuário, representada pelos arquivos FXML.
-- **Controller**: Representa os recursos utilizados para controlar o fluxo da aplicação. No nosso curso, são representados pelas classes do pacote `Controllers` ([MenuController](src/main/java/com/example/interface_de_clientes/Controllers/MenuController.java) e [CadastroController](src/main/java/com/example/interface_de_clientes/Controllers/CadastroController.java)).
+- **Controller**: Representa os recursos utilizados para controlar o fluxo da aplicação. No nosso curso, são representados pelas classes do pacote `Controllers` ([MenuController](/src/main/java/com/example/interface_de_clientes/Controllers/MenuController.java) e [CadastroController](/src/main/java/com/example/interface_de_clientes/Controllers/CadastroController.java)).
 
 ### Criando um Novo Projeto no IntelliJ IDEA:
 1. Na tela de criação de projeto (*New Project*), clique em **JavaFX**.
@@ -51,18 +51,18 @@ Se a janela padrão abrir com sucesso, está tudo ok! Caso contrário, consulte 
 
 ## 3° Etapa: Criação dos Packages, Classes e Arquivos FXML
 O projeto será organizado nos seguintes pacotes:
-- **Controllers**: Contém as classes [MenuController](src/main/java/com/example/interface_de_clientes/Controllers/MenuController.java) e [CadastroController](src/main/java/com/example/interface_de_clientes/Controllers/CadastroController.java).
-- **Models**: Composta exclusivamente pela classe [Cliente](src/main/java/com/example/interface_de_clientes/Models/Cliente.java).
+- **Controllers**: Contém as classes [MenuController](/src/main/java/com/example/interface_de_clientes/Controllers/MenuController.java) e [CadastroController](/src/main/java/com/example/interface_de_clientes/Controllers/CadastroController.java).
+- **Models**: Composta exclusivamente pela classe [Cliente](/src/main/java/com/example/interface_de_clientes/Models/Cliente.java).
 - **Utils**: Ferramentas auxiliares que facilitam o desenvolvimento:
-  - [NavigationManager](src/main/java/com/example/interface_de_clientes/Utills/NavigationManager.java): Gerencia a navegação entre telas.
-  - [AlertManager](src/main/java/com/example/interface_de_clientes/Utills/AlertManager.java): Facilita a exibição de caixas de diálogo e alertas.
+  - [NavigationManager](/src/main/java/com/example/interface_de_clientes/Utills/NavigationManager.java): Gerencia a navegação entre telas.
+  - [AlertManager](/src/main/java/com/example/interface_de_clientes/Utills/AlertManager.java): Facilita a exibição de caixas de diálogo e alertas.
 
 #### Classes Launcher.java e Main.java
-- A classe [Launcher](src/main/java/com/example/interface_de_clientes/Launcher.java) é responsável por inicializar o projeto chamando a classe [Main](src/main/java/com/example/interface_de_clientes/Main.java). Essa separação evita erros de componentes de runtime em projetos modularizados do JavaFX.
-- A classe [Main](src/main/java/com/example/interface_de_clientes/Main.java) carrega a tela inicial do sistema.
+- A classe [Launcher](/src/main/java/com/example/interface_de_clientes/Launcher.java) é responsável por inicializar o projeto chamando a classe [Main](/src/main/java/com/example/interface_de_clientes/Main.java). Essa separação evita erros de componentes de runtime em projetos modularizados do JavaFX.
+- A classe [Main](/src/main/java/com/example/interface_de_clientes/Main.java) carrega a tela inicial do sistema.
 
 #### Classe Sessão
-A classe [Sessao](src/main/java/com/example/interface_de_clientes/Sessao.java) funciona como um repositório global em memória para armazenar a lista de clientes e a referência da cena principal (*sceneInstance*), permitindo acesso prático de qualquer parte do sistema.
+A classe [Sessao](/src/main/java/com/example/interface_de_clientes/Sessao.java) funciona como um repositório global em memória para armazenar a lista de clientes e a referência da cena principal (*sceneInstance*), permitindo acesso prático de qualquer parte do sistema.
 
 #### Arquivos FXML
 Na pasta `resources/com/example/interface_de_clientes/`, criamos os arquivos `menu.fxml` e `cadastro.fxml`, que estruturam visualmente as nossas telas.
@@ -114,7 +114,7 @@ public class MenuController {
     TextArea txtAreaClientes;
 
     @FXML
-    private void cadastrar(MouseEvent event) throws Exception {
+    private void cadastrar(MouseEvent event) {
         NavigationManager.irPara("/com/example/interface_de_clientes/cadastro.fxml");
     }
 
@@ -136,20 +136,20 @@ public class MenuController {
     }
 }
 ```
-*Veja a implementação completa na classe [MenuController](src/main/java/com/example/interface_de_clientes/Controllers/MenuController.java).*
+*Veja a implementação completa na classe [MenuController](/src/main/java/com/example/interface_de_clientes/Controllers/MenuController.java).*
 
 [Voltar ao índice](#índice)
 
 ---
 
 ## 6° Etapa: Entendendo a Geração da Tela e o NavigationManager
-A inicialização da interface costuma ocorrer na classe [Main](src/main/java/com/example/interface_de_clientes/Main.java) através do carregamento de um arquivo FXML transformado em uma `Scene` e exibido em um `Stage`:
+A inicialização da interface costuma ocorrer na classe [Main](/src/main/java/com/example/interface_de_clientes/Main.java) através do carregamento de um arquivo FXML transformado em uma `Scene` e exibido em um `Stage`:
 
 - **FXMLLoader**: Responsável por ler os dados do arquivo de texto FXML e convertê-los em objetos visuais.
 - **Scene**: A cena que agrupa os componentes visuais.
 - **Stage**: A janela principal do sistema operacional.
 
-Para evitar repetir códigos complexos em cada controller a cada mudança de tela, utilizamos o [NavigationManager](src/main/java/com/example/interface_de_clientes/Utills/NavigationManager.java) em conjunto com a [Sessao](src/main/java/com/example/interface_de_clientes/Sessao.java).
+Para evitar repetir códigos complexos em cada controller a cada mudança de tela, utilizamos o [NavigationManager](/src/main/java/com/example/interface_de_clientes/Utills/NavigationManager.java) em conjunto com a [Sessao](/src/main/java/com/example/interface_de_clientes/Sessao.java).
 
 ### Código da Classe Main
 ```java
@@ -177,7 +177,7 @@ public class Main extends Application {
     }
 }
 ```
-*Veja a implementação completa na classe [Main](src/main/java/com/example/interface_de_clientes/Main.java).*
+*Veja a implementação completa na classe [Main](/src/main/java/com/example/interface_de_clientes/Main.java).*
 
 ### Código da Classe Sessao
 ```java
@@ -192,7 +192,7 @@ public class Sessao {
     static public Scene sceneInstance;
 }
 ```
-*Veja a implementação completa na classe [Sessao](src/main/java/com/example/interface_de_clientes/Sessao.java).*
+*Veja a implementação completa na classe [Sessao](/src/main/java/com/example/interface_de_clientes/Sessao.java).*
 
 ### Código da Classe NavigationManager
 ```java
@@ -216,7 +216,7 @@ public class NavigationManager {
      }
 }
 ```
-*Veja a implementação completa na classe [NavigationManager](src/main/java/com/example/interface_de_clientes/Utills/NavigationManager.java).*
+*Veja a implementação completa na classe [NavigationManager](/src/main/java/com/example/interface_de_clientes/Utills/NavigationManager.java).*
 
 [Voltar ao índice](#índice)
 
@@ -280,14 +280,14 @@ public class CadastroController {
     }
 }
 ```
-*Veja a implementação completa na classe [CadastroController](src/main/java/com/example/interface_de_clientes/Controllers/CadastroController.java).*
+*Veja a implementação completa na classe [CadastroController](/src/main/java/com/example/interface_de_clientes/Controllers/CadastroController.java).*
 
 [Voltar ao índice](#índice)
 
 ---
 
 ## 8° Etapa: Organizando o AlertManager e Tratamento de Exceções
-Para padronizar e simplificar a emissão de avisos visuais na tela sem duplicar código, isolamos a lógica de criação de caixas de diálogo na classe utilitária [AlertManager](src/main/java/com/example/interface_de_clientes/Utills/AlertManager.java).
+Para padronizar e simplificar a emissão de avisos visuais na tela sem duplicar código, isolamos a lógica de criação de caixas de diálogo na classe utilitária [AlertManager](/src/main/java/com/example/interface_de_clientes/Utills/AlertManager.java).
 
 ### Código do AlertManager
 ```java
@@ -308,6 +308,6 @@ public class AlertManager {
     }
 }
 ```
-*Veja a implementação completa na classe [AlertManager](src/main/java/com/example/interface_de_clientes/Utills/AlertManager.java).*
+*Veja a implementação completa na classe [AlertManager](/src/main/java/com/example/interface_de_clientes/Utills/AlertManager.java).*
 
 [Voltar ao índice](#índice)
