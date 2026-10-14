@@ -18,8 +18,8 @@
       <TextField id="campoNome" fx:id="campoNome" layoutX="236.0" layoutY="95.0" />
       <TextField id="campoIdade" fx:id="campoIdade" layoutX="236.0" layoutY="160.0" promptText="Somente numeros" />
       <Label layoutX="204.0" layoutY="164.0" text="Idade" />
-      <TextField id="campoCPF" fx:id="campoCPF" layoutX="236.0" layoutY="222.0" promptText="Somente numeros" />
-      <Label layoutX="208.0" layoutY="226.0" text="CPF" />
+      <TextField id="campoCPF" fx:id="campoTelefone" layoutX="236.0" layoutY="222.0" promptText="Somente numeros" />
+      <Label layoutX="188.0" layoutY="226.0" text="Telefone" />
       <Button id="cadastrarBtn" layoutX="277.0" layoutY="297.0" mnemonicParsing="false" onMouseClicked="#cadastrar" text="Cadastrar" />
    </children>
 </AnchorPane>

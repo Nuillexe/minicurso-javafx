@@ -2,22 +2,22 @@ package com.example.interface_de_clientes.Models;
 
 public class Cliente {
 
-    private String cpf;
+    private String telefone;
     private String nome;
     private int idade;
 
-    public Cliente(String cpf, String nome, int idade) {
-        this.cpf = cpf;
+    public Cliente(String nome,String telefone, int idade) {
+        this.telefone = telefone;
         this.nome = nome;
         this.idade = idade;
     }
 
-    public String getCpf() {
-        return cpf;
+    public String getTelefone() {
+        return telefone;
     }
 
-    public void setCpf(String cpf) {
-        this.cpf = cpf;
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
     }
 
     public String getNome() {
@@ -38,6 +38,6 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return cpf + " | " + nome + " | " + idade + "\n";
+        return " Nome: " + nome + " | Idade: " + idade + " | Telefone: "+telefone+"\n";
     }
 }

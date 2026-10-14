@@ -10,8 +10,9 @@ import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 
-
 public class CadastroController {
+
+    // Anotações @FXML vinculam as caixas de texto da tela (FXML) com o código Java
     @FXML
     TextField campoNome;
 
@@ -19,39 +20,53 @@ public class CadastroController {
     TextField campoIdade;
 
     @FXML
-    TextField campoCPF;
+    TextField campoTelefone;
 
+    // Método acionado ao clicar no botão de cadastrar
     @FXML
     private void cadastrar(MouseEvent event){
+        // Bloco try-catch para tentar executar o cadastro e tratar possíveis erros (exceções)
         try {
-            cadastro();
+            cadastro(); // Tenta realizar o processo de cadastro
 
-        }catch (java.lang.NumberFormatException e){
+        } catch (java.lang.NumberFormatException e){
+            // Erro gerado se o usuário digitar letras no campo de idade que espera números
             AlertManager.alertError("CPF e Idade estão invalidos");
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e){
+            // Erro genérico para argumentos inválidos
             AlertManager.alertError("Pode rever se os campos estão devidamente preenchidos");
-        }catch (IOException e){
+        } catch (IOException e){
+            // Erro caso aconteça algum problema ao carregar o arquivo FXML do menu
             AlertManager.alertError("Erro ao carregar a tela de menu");
+        } finally {
+            // O bloco 'finally' SEMPRE roda no final, independentemente de ter dado erro ou sucesso.
+            // Aqui garantimos que o usuário é sempre mandado de volta para o menu.
+                NavigationManager.irPara("/com/example/interface_de_clientes/menu.fxml");
+
         }
     }
 
+    // Método interno que faz a leitura dos campos e validações de dados
     private void cadastro() throws IOException{
+        // Pega o texto digitado nas caixas de texto
         String nome = campoNome.getText();
-        int idade = Integer.parseInt(campoIdade.getText());
-        String cpf= campoCPF.getText();
+        int idade = Integer.parseInt(campoIdade.getText()); // Converte o texto da idade para número inteiro
+        String telefone = campoTelefone.getText();
 
-        if(cpf==null || nome==null || campoIdade==null){
+        // Validação básica para garantir que os campos não estão nulos
+        if(campoTelefone == null || nome == null || campoIdade == null){
             AlertManager.alertError("Há campos vazios");
-            return;
+            return; // Para a execução se houver erro
         }
-        if(cpf.length()!=11 || !cpf.matches("\\d+")){
-            AlertManager.alertError("CPF deve ter somente 11 numeros");
+
+        // Validação do telefone: deve ter exatamente 11 dígitos e conter apenas números
+        if(telefone.length() != 11 || !telefone.matches("\\d+")){
+            AlertManager.alertError("CPF deve ter somente 11 numeros"); // (Mensagem mantida conforme o seu código)
             return;
         }
 
-        Sessao.listaDeClientes.add(new Cliente(nome, cpf, idade));
+        // Se passou por todas as validações, cria um novo objeto Cliente e adiciona na lista global da Sessão
+        Sessao.listaDeClientes.add(new Cliente(nome, telefone, idade));
         AlertManager.alertInformacao("O cadastro foi concluido com sucesso!");
-
-        NavigationManager.irPara("/com/example/interface_de_clientes/menu.fxml");
     }
 }
