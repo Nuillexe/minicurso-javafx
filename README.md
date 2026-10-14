@@ -52,3 +52,14 @@ Interface para inserção de dados do cliente (Nome, Idade e Telefone).
 * **Validações**: Se o usuário deixar campos em branco ou digitar letras no campo numérico, o sistema emite um alerta de erro via `AlertManager` impedindo o cadastro incorreto.
 
 ![Tela de Cadastro](/docs/images/telaCadastro.png)
+
+
+## Avaliação do minicurso
+Avalie em:[]()
+
+![qrCode](/docs/images/qrCode.png)
+
+## Acesso ao projeto
+Acesse o projeto em []()
+
+![qrcode](/docs/images/githubDoProjeto.png)
