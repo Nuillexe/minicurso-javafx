@@ -1,48 +1,66 @@
-# Manual de resolução de problemas
+# Manual de Resolução de Problemas
 
-A maior parte dos problemas para a execução do projeto esta relacionada a compatibilidade da versão do Java e JavaFx
+A maior parte dos problemas durante a execução de projetos JavaFX está relacionada a conflitos entre as versões do Java e das bibliotecas.
 
-## JavaFx não reconhecido e precisa configurar manualmente 
-Acesse o [Manual de configuração do JavaFx](Configuração%20Manual%20javaFx.md)
+> ⚠️ **ATENÇÃO À VERSÃO DO JAVA:**
+> Recomendamos fortemente o uso do **Java 21**. Versões anteriores (como o Java 17 ou Java 8) costumam apresentar incompatibilidades complexas com as versões mais recentes do JavaFX.
 
-## Problemas com as configuraçoes do Java
-Antes de executar o projeto, é necessarios verificar se em todas as configuraçoes a versão do java utilizada é 21+ e
-compartivel com seu projeto. 
+---
 
-O ideal é que em diferentes configuraçoes seja considerado a mesma versão do Java
+## 1. JavaFX não reconhecido no projeto
+Se o JavaFX não estiver sendo reconhecido ou a IDE acusar falta de módulos na execução, consulte o guia passo a passo no [Manual de Configuração Manual do JavaFX](Configuração%20Manual%20javaFx.md).
 
-Um erro comum é aparecer no terminal que o projeto não é compativel com o Java 8 por exemplo, msm vc usando um Jdk 
-diferente.
+---
 
+## 2. Incompatibilidade de Versões do Java (Erros de Bytecode / Class Version)
 
-### Configuraçoes em Project Structure
+Um erro muito comum no terminal ao tentar rodar a aplicação é:  
+`java.lang.UnsupportedClassVersionError: ... has been compiled by a more recent version of the Java Runtime`  
+Ou mensagens indicando incompatibilidade com versões antigas (como Java 8), mesmo quando você tem um JDK mais novo instalado.
 
-![Selecionando Project Structure](/docs/images/img_1.png)
+Para resolver isso, precisamos padronizar **todas** as configurações da IDE para utilizarem o **Java 21**.
 
-#### Module
-Em Module deve-se atribuir a Language Level a numero da mesma vesão do jdk utilizada no projeto, no caso do nosso
-projeto, 17+. O ideal é dexar prject Default, pq vai ser o msm numero do JDk utilizado
+---
 
-![Exemplo incorreto mantendo o Language Level mantendo-o em 8](/docs/images/img_2.png)
-Versão não compativel com nosso projeto
-![Exemplo selecionando 17](docs/images/img_3.png)
-Versão correta
+### Passo 1: Ajustar a Estrutura do Projeto (*Project Structure*)
 
-#### Project
-Verificar se SDK e Language Level são 17+
-![Configuração na aba de Project](/docs/images/img_6.png)
+Abra a janela de estrutura do projeto pelo atalho **`Ctrl + Alt + Shift + S`** (Windows/Linux) ou **`Cmd + ;`** (Mac), ou acesse pelo menu:  
+`File` ➔ `Project Structure...`
 
-#### SDK's
-Verifcar se há uma versão 17+ instalada
-![Configuração na aba dos SDK's](/docs/images/img_7.png)
+Siga as verificações abaixo no menu lateral esquerdo:
 
-### Configuração em Settings
-Vá em settings
-![Settings](/docs/images/img_8.png)
+#### A. Aba **Project**
+1. No campo **SDK**, selecione o **Java 21** (ou JDK 21).
+2. No campo **Language level**, escolha **21 - Preview - Pattern matching for switch...** (ou `Project Default`).
 
-Em seguida vá em **Build, Compiller, Execution** > **Compiller** > **Java Compiler**. Na tela que aparecer mude
-*Project bytecode version* e *Target bytecode version* para 17+ ou Project Default.
-![Tela da modificação em Settings](/docs/images/img_9.png)
+#### B. Aba **Modules**
+1. Clique no seu projeto na lista de módulos.
+2. Na aba **Sources**, verifique o campo **Language level**.
+3. Altere de *8* ou *17* para **`Project Default (21 - ...)`** ou escolha diretamente o nível **21**.
 
-Caso, durante a execução do projeto, apareça algum erro, feche a IDE, abra de novo, e refaça a modificação
+#### C. Aba **SDKs**
+1. Confirme se o **JDK 21** está listado na barra lateral.
+2. Caso não esteja, clique no botão **`+` (Add New SDK)** ➔ **Download JDK** ➔ Selecione a versão **21** (Vendor: Oracle ou Eclipse Temurin) para instalar automaticamente.
 
+---
+
+### Passo 2: Ajustar as Configurações do Compilador (*Settings*)
+
+Abra as configurações da IDE pelo atalho **`Ctrl + Alt + S`** (Windows/Linux) ou **`Cmd + ,`** (Mac), ou acesse:  
+`File` ➔ `Settings` (ou `Preferences`).
+
+Navegue pelo menu lateral:  
+`Build, Execution, Deployment` ➔ `Compiler` ➔ `Java Compiler`
+
+Faça os seguintes ajustes:
+
+1. **Project bytecode version**: Mude para **21** (ou `Project Default`).
+2. **Target bytecode version** (na tabela abaixo, se listada): Certifique-se de que a coluna da versão esteja em **21**.
+
+---
+
+### 💡 Dica de Ouro (Reiniciar a IDE)
+Se mesmo após alterar todas essas opções o erro continuar aparecendo:
+1. Vá em `File` ➔ `Invalidate Caches...`
+2. Marque as opções e clique em **Invalidate and Restart**.
+3. Abra a IDE novamente e rode a classe `Launcher.java`.
