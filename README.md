@@ -52,3 +52,17 @@ Interface para inserção de dados do cliente (Nome, Idade e Telefone).
 * **Validações**: Se o usuário deixar campos em branco ou digitar letras no campo numérico, o sistema emite um alerta de erro via `AlertManager` impedindo o cadastro incorreto.
 
 ![Tela de Cadastro](/docs/images/telaCadastro.png)
+
+
+## Avaliação do Minicurso
+Avalie o minicurso em: [https://forms.gle/Gx1btsBq4Ycmt42Z6](https://forms.gle/Gx1btsBq4Ycmt42Z6)
+
+Ou escaneie o QR Code:
+![qr-code](/docs/images/qrCode.png)
+
+## Acesso ao GitHub do minicurso:
+Acesso em: [https://github.com/Nuillexe/minicurso-javafx](https://github.com/Nuillexe/minicurso-javafx)
+
+ou pelo QrCode:
+![QrCode](/docs/images/githubDoProjeto.png)
+
