@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 import java.util.ArrayList;
 
 public class MenuController {
-
+//a
     @FXML
     private void cadastrar(MouseEvent event) throws Exception{
 
