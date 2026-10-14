@@ -35,8 +35,8 @@ O objetivo principal é introduzir os alunos ao ecossistema JavaFX de forma prá
 
 ## 📚 Documentação do Projeto
 
-* 🗺️ **Roteiro do Minicurso**: Acompanhe o passo a passo da aula pelo [Roteiro Oficial](docs/roteiro_do_minicurso.md).
-* 🛠️ **Suporte e Solução de Erros**: Teve problemas de execução ou versão? Acesse o [Manual de Resolução de Problemas](docs/Manual%20de%20resolucao%20de%20problemas.md).
+* 🗺️ **Roteiro do Minicurso**: Acompanhe o passo a passo da aula pelo [Roteiro Oficial](docs/Roteiro.md).
+* 🛠️ **Suporte e Solução de Erros**: Teve problemas de execução ou versão? Acesse o [Manual de Resolução de Problemas](docs/Manual%20de%20resolucao%20de%20bugs.md).
 
 ---
 
@@ -55,11 +55,11 @@ Interface para inserção de dados do cliente (Nome, Idade e Telefone).
 
 
 ## Avaliação do minicurso
-Avalie em:[]()
+Avalie em:[https://forms.gle/stSRqnQ2K54tokWG8](https://forms.gle/stSRqnQ2K54tokWG8)
 
 ![qrCode](/docs/images/qrCode.png)
 
 ## Acesso ao projeto
-Acesse o projeto em []()
+Acesse o projeto em [https://forms.gle/stSRqnQ2K54tokWG8](https://forms.gle/stSRqnQ2K54tokWG8)
 
 ![qrcode](/docs/images/githubDoProjeto.png)
