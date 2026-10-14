@@ -13,5 +13,13 @@ import java.io.IOException;
 
 
 public class CadastroController {
-    
+    @FXML
+    private void cadastrar(MouseEvent event){
+
+    }
+
+
+    private void cadastro(){
+
+    }
 }

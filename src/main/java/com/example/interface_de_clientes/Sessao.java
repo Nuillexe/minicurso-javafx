@@ -9,6 +9,4 @@ import java.util.ArrayList;
 public class Sessao {
     static public Scene sceneInstance;
     static public ArrayList listaDeClientes= new ArrayList<Cliente>();
-
-
 }

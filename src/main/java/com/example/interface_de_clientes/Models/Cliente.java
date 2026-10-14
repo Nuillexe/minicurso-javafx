@@ -38,6 +38,6 @@ public class Cliente {
 
     @Override
     public String toString() {
-        return cpf + " | " + nome + " | " + idade + "\n";
+        return "CPF: "+ cpf + " | Nome: " + nome + " | Idade: " + idade + "\n";
     }
 }
