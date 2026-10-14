@@ -60,6 +60,5 @@ Avalie em:[https://forms.gle/stSRqnQ2K54tokWG8](https://forms.gle/stSRqnQ2K54tok
 ![qrCode](/docs/images/qrCode.png)
 
 ## Acesso ao projeto
-Acesse o projeto em [https://forms.gle/stSRqnQ2K54tokWG8](https://forms.gle/stSRqnQ2K54tokWG8)
-
+Acesse o projeto em [https://github.com/Nuillexe/minicurso-javafx](https://github.com/Nuillexe/minicurso-javafx)
 ![qrcode](/docs/images/githubDoProjeto.png)
