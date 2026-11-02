@@ -57,8 +57,6 @@ Interface para inserção de dados do cliente (Nome, Idade e Telefone).
 ## Avaliação do minicurso
 Avalie em:[https://forms.gle/stSRqnQ2K54tokWG8](https://forms.gle/stSRqnQ2K54tokWG8)
 
-![qrCode](/docs/images/qrCode.png)
 
 ## Acesso ao projeto
 Acesse o projeto em [https://github.com/Nuillexe/minicurso-javafx](https://github.com/Nuillexe/minicurso-javafx)
-![qrcode](/docs/images/githubDoProjeto.png)
