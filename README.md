@@ -37,7 +37,7 @@ O objetivo principal é introduzir os alunos ao ecossistema JavaFX de forma prá
 
 * 🗺️ **Roteiro do Minicurso**: Acompanhe o passo a passo da aula pelo [Roteiro Oficial](docs/Roteiro.md).
 * 🛠️ **Suporte e Solução de Erros**: Teve problemas de execução ou versão? Acesse o [Manual de Resolução de Problemas](docs/Manual%20de%20resolucao%20de%20bugs.md).
-
+* ☕ **Criação de arquivo Jar e Artifact**: Guia para a criação do executavel do seu projeto:[Tutorial para a criação do JAR](docs/jar_tutorial.md)
 ---
 
 ## 🖥️ Demonstração da Aplicação
