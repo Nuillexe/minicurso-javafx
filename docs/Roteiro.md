@@ -57,7 +57,7 @@ O projeto será organizado nos seguintes pacotes:
   - [NavigationManager](/src/main/java/com/example/interface_de_clientes/Utills/NavigationManager.java): Gerencia a navegação entre telas.
   - [AlertManager](/src/main/java/com/example/interface_de_clientes/Utills/AlertManager.java): Facilita a exibição de caixas de diálogo e alertas.
 
-#### Classes Launcher.java e Main.java
+####  Classes Launcher.java e Main.java
 - A classe [Launcher](/src/main/java/com/example/interface_de_clientes/Launcher.java) é responsável por inicializar o projeto chamando a classe [Main](/src/main/java/com/example/interface_de_clientes/Main.java). Essa separação evita erros de componentes de runtime em projetos modularizados do JavaFX.
 - A classe [Main](/src/main/java/com/example/interface_de_clientes/Main.java) carrega a tela inicial do sistema.
 
